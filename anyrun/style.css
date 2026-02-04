@@ -1,51 +1,71 @@
 * {
-    transition: 200ms ease;
     font-family: "JetBrainsMono Nerd Font";
-    font-size: 1rem;
+    font-size: 16px;
+    color: #cdd6f4;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    min-height: 0;
+    min-width: 0;
 }
 
-#window {
+window {
     background: transparent;
 }
 
-#match,
-#entry,
-#plugin,
-#main {
+window > box:first-child {
+    background: rgba(30, 30, 46, 0.85);
+    border-radius: 14px;
+    border: 1px solid rgba(137, 180, 250, 0.15);
+    padding: 6px 0;
+}
+
+entry,
+text,
+window entry,
+window text,
+box entry,
+box text {
     background: transparent;
-}
-
-#match.activatable {
-    border-radius: 8px;
-    padding: 0.3rem 0.9rem;
-    margin-top: 0.01rem;
-}
-
-#match.activatable:first-child {
-    margin-top: 0.7rem;
-}
-
-#match.activatable:last-child {
-    margin-bottom: 0.6rem;
-}
-
-#match:selected,
-#match:hover {
-    background: rgba(137, 180, 250, 0.15);
-}
-
-#entry {
-    background: rgba(30, 30, 46, 0.9);
-    border: 1px solid rgba(137, 180, 250, 0.3);
-    border-radius: 12px;
-    margin: 0.5rem;
-    padding: 0.5rem 1rem;
+    padding: 4px 26px;
+    margin: 0;
+    font-size: 18px;
+    caret-color: #89b4fa;
+    min-height: 24px;
     color: #cdd6f4;
 }
 
-box#main {
-    background: rgba(30, 30, 46, 0.85);
-    border: 1px solid rgba(137, 180, 250, 0.2);
-    border-radius: 16px;
-    padding: 0.3rem;
+row {
+    padding: 8px 24px;
+    margin: 0;
+    border-radius: 0;
+}
+
+row:selected,
+row:hover {
+    background: rgba(137, 180, 250, 0.15);
+}
+
+row image {
+    margin-right: 14px;
+    min-width: 36px;
+    min-height: 36px;
+    -gtk-icon-size: 36px;
+}
+
+row label:last-child {
+    font-size: 0px;
+    opacity: 0;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+list > image {
+    min-width: 0;
+    min-height: 0;
+    opacity: 0;
 }

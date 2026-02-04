@@ -6,7 +6,7 @@ Config(
     hide_icon_search: false,
     ignore_exclusive_zones: false,
     layer: Overlay,
-    hide_plugin_info: false,
+    hide_plugin_info: true,
     close_on_click: false,
     show_results_immediately: false,
     max_entries: Some(10),
@@ -14,7 +14,7 @@ Config(
         "/etc/anyrun/plugins/libapplications.so",
         "/etc/anyrun/plugins/libshell.so",
         "/etc/anyrun/plugins/librink.so",
-        "/etc/anyrun/plugins/libsymbols.so",
+        // "/etc/anyrun/plugins/libsymbols.so",
         "/etc/anyrun/plugins/libwebsearch.so",
     ],
 )
