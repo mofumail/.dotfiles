@@ -7,7 +7,7 @@
 
 /* ── Bar: floating + rounded + blurred ────────────── */
 window#waybar {
-    background-color: rgba(30, 30, 46, 0.5);
+    background-color: rgba(30, 30, 46, 0);
     color: #cdd6f4;
     border-radius: 14px;
     border: 1px solid rgba(137, 180, 250, 0.15);
@@ -19,7 +19,7 @@ window#waybar {
     background: rgba(24, 24, 37, 0.5);
     border-radius: 10px;
     margin: 4px 4px;
-    padding: 0 2px;
+    padding: 2px 2px;
 }
 
 #workspaces button {
@@ -38,8 +38,8 @@ window#waybar {
 }
 
 #workspaces button:hover {
-    color: #cdd6f4;
-    background: rgba(137, 180, 250, 0.25);
+   color: #1e1e2e;
+   background: rgba(137, 180, 250, 0);
 }
 
 /* ── Window title ─────────────────────────────────── */
@@ -54,8 +54,8 @@ window#waybar {
     font-weight: bold;
     background: rgba(24, 24, 37, 0.5);
     border-radius: 10px;
-    padding: 2px 14px;
-    margin: 4px 0;
+    padding: 4px 14px;
+    margin: 3px 0;
 }
 
 /* ── Right-side module pills ──────────────────────── */
@@ -66,8 +66,8 @@ window#waybar {
 #battery,
 #tray,
 #custom-notification {
-    padding: 2px 12px;
-    margin: 4px 2px;
+    padding: 4px 12px;
+    margin: 3px 2px;
     border-radius: 10px;
     background: rgba(24, 24, 37, 0.5);
     transition: all 0.2s ease;
