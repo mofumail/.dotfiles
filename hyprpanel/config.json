@@ -199,7 +199,8 @@
   "bar.customModules.storage.paths": [
     "/"
   ],
-  "wallpaper.image": "/home/mofu/Pictures/papes/1751719713760614.png",
+  "wallpaper.image": "/home/mofu/Pictures/papes/8EKCeU8.jpg",
   "wallpaper.enable": true,
-  "theme.matugen": true
+  "theme.matugen": true,
+  "theme.bar.transparent": true
 }
