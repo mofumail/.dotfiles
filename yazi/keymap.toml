@@ -1,0 +1,4 @@
+[[mgr.prepend_keymap]]
+on = "W"
+run = "shell -- swww img %h --transition-type grow --transition-pos 0.854,0.977 --transition-duration 2"
+desc = "Set image as wallpaper"
