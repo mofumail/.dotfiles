@@ -22,7 +22,7 @@
       "hud_notifications": true
     },
     "power": {
-      "enabled": true,
+      "enabled": false,
       "low_percent": 10,
       "critical_percent": 5,
       "low_command": "",
@@ -32,7 +32,7 @@
   },
   "audio": {
     "enabled": true,
-    "volume_step_percent": 5,
+    "volume_step_percent": 2,
     "volume_exceed_maximum": false,
     "hud_notifications": true
   },
@@ -102,14 +102,7 @@
               "nm-applet",
               "chrome_status_icon_1"
             ],
-            "modules": [
-              {
-                "power": {
-                  "icon_size": 22,
-                  "icon_symbolic": true
-                }
-              }
-            ]
+            "modules": []
           }
         },
         {
@@ -152,15 +145,12 @@
         },
         {
           "clock": {
-            "time_format": "15:04",
+            "time_format": "15:04:05",
             "date_format": "2006-01-02",
-            "tooltip_time_format": "15:04",
-            "tooltip_date_format": "Mon, 02 Jan 2006 MST",
+            "tooltip_time_format": "15:04:05",
+            "tooltip_date_format": "Mon, 02 Jan 2006",
             "additional_regions": [
-              "America/Los_Angeles",
-              "America/Chicago",
-              "America/New_York",
-              "Europe/London"
+              "Europe/Paris"
             ]
           }
         },
@@ -199,7 +189,7 @@
   "bar.customModules.storage.paths": [
     "/"
   ],
-  "wallpaper.image": "/home/mofu/Pictures/papes/8EKCeU8.jpg",
+  "wallpaper.image": "/home/mofu/Pictures/papes/wallhaven-9djxk1.jpg",
   "wallpaper.enable": true,
   "theme.matugen": true,
   "theme.bar.transparent": true

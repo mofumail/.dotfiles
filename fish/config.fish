@@ -14,7 +14,7 @@ source "$HOME/.local/share/../bin/env.fish"
 # pyenv
 set -gx PYENV_ROOT "$HOME/.pyenv"
 fish_add_path "$PYENV_ROOT/bin"
-pyenv init - fish | source
+pyenv init - --no-rehash fish | source
 
 # rust
 source "$HOME/.cargo/env.fish"
