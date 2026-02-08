@@ -1,4 +1,7 @@
 # Core desktop
+hyprland
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
 waybar
 swww
 swaync
@@ -17,6 +20,16 @@ slurp
 wl-clipboard
 brightnessctl
 hyprsunset
+
+# Tools
+git
+matugen
+btop
+fastfetch
+htop
+micro
+mpv
+zed
 
 # Fonts
 # Provides "JetBrainsMono Nerd Font" used by kitty/waybar/anyrun/swaylock

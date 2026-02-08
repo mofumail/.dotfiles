@@ -135,15 +135,43 @@ link_path() {
 }
 
 log "Applying configs"
-link_path "$DOTFILES_DIR/hypr" "$HOME/.config/hypr"
-link_path "$DOTFILES_DIR/waybar" "$HOME/.config/waybar"
-link_path "$DOTFILES_DIR/anyrun" "$HOME/.config/anyrun"
-link_path "$DOTFILES_DIR/kitty" "$HOME/.config/kitty"
-link_path "$DOTFILES_DIR/yazi" "$HOME/.config/yazi"
-link_path "$DOTFILES_DIR/swaync" "$HOME/.config/swaync"
-link_path "$DOTFILES_DIR/fish" "$HOME/.config/fish"
-link_path "$DOTFILES_DIR/hyprpanel" "$HOME/.config/hyprpanel"
-link_path "$DOTFILES_DIR/swaylock" "$HOME/.config/swaylock"
+CONFIG_ROOT="$DOTFILES_DIR"
+if [[ -d "$DOTFILES_DIR/config" ]]; then
+  CONFIG_ROOT="$DOTFILES_DIR/config"
+fi
+
+CONFIG_EXCLUDES=(
+  ".git"
+  ".gitignore"
+  "assets"
+  "packages"
+  "system"
+  "setup.sh"
+  "README.md"
+)
+
+is_excluded() {
+  local name="$1"
+  local ex
+  for ex in "${CONFIG_EXCLUDES[@]}"; do
+    if [[ "$name" == "$ex" ]]; then
+      return 0
+    fi
+  done
+  return 1
+}
+
+shopt -s nullglob
+for entry in "$CONFIG_ROOT"/*; do
+  name="$(basename "$entry")"
+  if is_excluded "$name"; then
+    continue
+  fi
+  if [[ -d "$entry" || -f "$entry" ]]; then
+    link_path "$entry" "$HOME/.config/$name"
+  fi
+done
+shopt -u nullglob
 
 if (( INSTALL_WALLPAPER )); then
   WP_SRC="$DOTFILES_DIR/assets/wallpaper.jpg"
