@@ -1,0 +1,26 @@
+# Core desktop
+waybar
+swww
+swaync
+swaylock-effects-git
+starship
+anyrun-git
+hyprpanel
+kitty
+fish
+yazi
+dolphin
+pavucontrol
+playerctl
+grim
+slurp
+wl-clipboard
+brightnessctl
+hyprsunset
+
+# Fonts
+# Provides "JetBrainsMono Nerd Font" used by kitty/waybar/anyrun/swaylock
+# Provides Font Awesome icons used by waybar
+# (Keep these exact package names for Arch/CachyOS)
+ttf-jetbrains-mono-nerd
+otf-font-awesome
