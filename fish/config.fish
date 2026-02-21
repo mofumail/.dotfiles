@@ -1,4 +1,6 @@
-source /usr/share/cachyos-fish-config/cachyos-config.fish
+# CachyOS base fish config (present on CachyOS, skipped gracefully elsewhere)
+test -f /usr/share/cachyos-fish-config/cachyos-config.fish \
+  && source /usr/share/cachyos-fish-config/cachyos-config.fish
 
 # overwrite greeting
 # potentially disabling fastfetch
@@ -6,15 +8,18 @@ source /usr/share/cachyos-fish-config/cachyos-config.fish
 #    # smth smth
 #end
 
-starship init fish | source
+# starship prompt
+command -q starship && starship init fish | source
 
 # uv
-source "$HOME/.local/share/../bin/env.fish"
+test -f "$HOME/.local/bin/env.fish" \
+  && source "$HOME/.local/bin/env.fish"
 
 # pyenv
 set -gx PYENV_ROOT "$HOME/.pyenv"
 fish_add_path "$PYENV_ROOT/bin"
-pyenv init - --no-rehash fish | source
+command -q pyenv && pyenv init - --no-rehash fish | source
 
 # rust
-source "$HOME/.cargo/env.fish"
+test -f "$HOME/.cargo/env.fish" \
+  && source "$HOME/.cargo/env.fish"

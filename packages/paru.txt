@@ -14,6 +14,7 @@ anyrun-git
 hyprpanel
 kitty
 fish
+cachyos-fish-config
 yazi
 dolphin
 pavucontrol
