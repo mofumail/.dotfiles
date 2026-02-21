@@ -1,4 +1,6 @@
 # Core desktop
+firefox
+zen-browser-bin
 hyprland
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk

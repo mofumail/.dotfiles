@@ -88,7 +88,7 @@ if [[ -d "$SCRIPT_DIR/.git" && -f "$SCRIPT_DIR/hypr/hyprland.conf" ]]; then
 fi
 
 # ══════════════════════════════════════════════════════════════════════════════
-step "1/6  Bootstrap — git & base-devel"
+step "1/7  Bootstrap — git & base-devel"
 # ══════════════════════════════════════════════════════════════════════════════
 
 ensure_sudo
@@ -101,7 +101,7 @@ else
 fi
 
 # ══════════════════════════════════════════════════════════════════════════════
-step "2/6  Dotfiles — clone / update"
+step "2/7  Dotfiles — clone / update"
 # ══════════════════════════════════════════════════════════════════════════════
 
 if [[ "$DOTFILES_DIR" == "$SCRIPT_DIR" ]]; then
@@ -115,7 +115,7 @@ else
 fi
 
 # ══════════════════════════════════════════════════════════════════════════════
-step "3/6  Packages — paru + paru.txt"
+step "3/7  Packages — paru + paru.txt"
 # ══════════════════════════════════════════════════════════════════════════════
 
 if (( ! SKIP_PACKAGES )); then
@@ -165,7 +165,7 @@ else
 fi
 
 # ══════════════════════════════════════════════════════════════════════════════
-step "4/6  Configs — symlink dotfiles → ~/.config"
+step "4/7  Configs — symlink dotfiles → ~/.config"
 # ══════════════════════════════════════════════════════════════════════════════
 
 # These top-level entries in the repo are NOT config dirs and must not be linked.
@@ -173,6 +173,7 @@ CONFIG_EXCLUDES=(
   ".git"
   ".gitignore"
   "assets"
+  "browser"
   "packages"
   "system"
   "setup.sh"
@@ -220,7 +221,58 @@ if command -v xdg-user-dirs-update &>/dev/null; then
 fi
 
 # ══════════════════════════════════════════════════════════════════════════════
-step "5/6  Wallpaper + SDDM"
+step "5/7  Theming — flavours + browser chrome"
+# ══════════════════════════════════════════════════════════════════════════════
+
+# Apply catppuccin mocha colour scheme via flavours
+if command -v flavours &>/dev/null; then
+  log "Applying catppuccin mocha colour scheme"
+  run flavours apply mocha
+else
+  warn "flavours not found — skipping colour scheme apply"
+fi
+
+# Install shared browser chrome (userChrome.css + user.js) for Firefox and Zen.
+# Both browsers use an identical frosted Catppuccin Mocha theme.
+# Profiles only exist after the browser has been launched at least once, so
+# this step is skipped with a reminder if no profile is found yet.
+install_browser_chrome() {
+  local browser="$1"   # display name
+  local profile_dir="$2"
+
+  if [[ -z "$profile_dir" || ! -d "$profile_dir" ]]; then
+    warn "$browser: no profile found — launch it once then rerun setup.sh --no-packages --no-sddm"
+    return 0
+  fi
+
+  local chrome_dir="$profile_dir/chrome"
+  log "$browser: installing chrome → $chrome_dir"
+  run mkdir -p "$chrome_dir"
+  run cp -f "$DOTFILES_DIR/browser/chrome/userChrome.css" "$chrome_dir/userChrome.css"
+  run cp -f "$DOTFILES_DIR/browser/user.js" "$profile_dir/user.js"
+}
+
+BROWSER_SRC="$DOTFILES_DIR/browser"
+if [[ -d "$BROWSER_SRC" ]]; then
+  # Firefox — match *.default-release or *.default
+  FF_PROFILE=""
+  for p in ~/.mozilla/firefox/*.default-release ~/.mozilla/firefox/*.default; do
+    [[ -d "$p" ]] && { FF_PROFILE="$p"; break; }
+  done
+  install_browser_chrome "Firefox" "$FF_PROFILE"
+
+  # Zen — match *.Default* (Zen uses "Default (release)" naming)
+  ZEN_PROFILE=""
+  for p in ~/.zen/*.Default*; do
+    [[ -d "$p" ]] && { ZEN_PROFILE="$p"; break; }
+  done
+  install_browser_chrome "Zen" "$ZEN_PROFILE"
+else
+  warn "browser/ dir not found in dotfiles — skipping browser chrome"
+fi
+
+# ══════════════════════════════════════════════════════════════════════════════
+step "6/7  Wallpaper + SDDM"
 # ══════════════════════════════════════════════════════════════════════════════
 
 # ── Wallpaper ──
@@ -273,7 +325,7 @@ else
 fi
 
 # ══════════════════════════════════════════════════════════════════════════════
-step "6/6  Shell — fish default + Fisher plugins"
+step "7/7  Shell — fish default + Fisher plugins"
 # ══════════════════════════════════════════════════════════════════════════════
 
 if command -v fish &>/dev/null; then
@@ -315,14 +367,9 @@ fi
 
 # ══════════════════════════════════════════════════════════════════════════════
 printf "\n${G}══ Done! ══${N}\n"
-log "Reboot to reach the SDDM login screen."
-log "On first login, set your wallpaper:"
-log "  swww img ~/.local/share/wallpapers/wallpaper.jpg"
+log "Reboot — SDDM will greet you, Hyprland will load your wallpaper automatically."
 log ""
-log "To apply a colour scheme with flavours:"
-log "  flavours list"
-log "  flavours apply <scheme>"
-log ""
-warn "Note: pyenv and uv environments will be set up on first use."
-warn "      If fish complains about missing env files on first launch, just"
-warn "      run 'uv' and 'pyenv install <version>' once to initialise them."
+log "First-launch reminders:"
+log "  • Open Firefox and Zen once, then rerun setup.sh if browser chrome wasn't applied"
+log "  • Run 'uv' and 'pyenv install <version>' once to initialise dev environments"
+log "  • Use 'flavours apply <scheme>' anytime to switch colour schemes"
