@@ -6,6 +6,7 @@ waybar
 swww
 swaync
 swaylock-effects-git
+sddm
 starship
 anyrun-git
 hyprpanel
@@ -23,13 +24,18 @@ hyprsunset
 
 # Tools
 git
+curl
 matugen
+flavours
 btop
 fastfetch
 htop
 micro
 mpv
 zed
+rustup
+uv
+pyenv
 
 # Fonts
 # Provides "JetBrainsMono Nerd Font" used by kitty/waybar/anyrun/swaylock
