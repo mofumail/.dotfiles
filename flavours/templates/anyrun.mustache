@@ -1,0 +1,72 @@
+/* ── Theme: {{scheme-name}} ────────────────────────── */
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 16px;
+    color: #{{base05-hex}};
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    min-height: 0;
+    min-width: 0;
+}
+
+window {
+    background: transparent;
+}
+
+window > box:first-child {
+    background: rgba({{base00-hex-r}}, {{base00-hex-g}}, {{base00-hex-b}}, 0.85);
+    border-radius: 14px;
+    border: 1px solid rgba({{base0D-hex-r}}, {{base0D-hex-g}}, {{base0D-hex-b}}, 0.15);
+    padding: 6px 0;
+}
+
+entry,
+text,
+window entry,
+window text,
+box entry,
+box text {
+    background: transparent;
+    padding: 4px 26px;
+    margin: 0;
+    font-size: 18px;
+    caret-color: #{{base0D-hex}};
+    min-height: 24px;
+    color: #{{base05-hex}};
+}
+
+row {
+    padding: 8px 24px;
+    margin: 0;
+    border-radius: 0;
+}
+
+row:selected,
+row:hover {
+    background: rgba({{base0D-hex-r}}, {{base0D-hex-g}}, {{base0D-hex-b}}, 0.15);
+}
+
+row image {
+    margin-right: 14px;
+    min-width: 36px;
+    min-height: 36px;
+    -gtk-icon-size: 36px;
+}
+
+row label:last-child {
+    font-size: 0px;
+    opacity: 0;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+list > image {
+    min-width: 0;
+    min-height: 0;
+    opacity: 0;
+}

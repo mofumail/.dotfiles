@@ -1,0 +1,50 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "preferred_line_length": 80,
+  "soft_wrap": "preferred_line_length",
+  "inlay_hints": {
+    "enabled": true,
+  },
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 500,
+    },
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+      "max_severity": null,
+    },
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "checkOnSave": true,
+        "check": { "command": "clippy" },
+      },
+    },
+  },
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Catppuccin Mocha",
+  },
+  "base_keymap": "JetBrains",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "dark",
+    "light": "Nord Light",
+    "dark": "Catppuccin Mocha",
+  },
+}

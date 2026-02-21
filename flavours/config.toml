@@ -1,0 +1,27 @@
+[[items]]
+file = "~/.dotfiles/kitty/kitty.conf"
+template = "kitty"
+rewrite = true
+hook = "pkill -USR1 kitty"
+
+[[items]]
+file = "~/.dotfiles/waybar/style.css"
+template = "waybar"
+rewrite = true
+hook = "pkill -SIGUSR2 waybar"
+
+[[items]]
+file = "~/.dotfiles/anyrun/style.css"
+template = "anyrun"
+rewrite = true
+
+[[items]]
+file = "~/.config/swaylock/config"
+template = "swaylock"
+rewrite = true
+
+[[items]]
+file = "~/.config/hypr/hyprland.conf"
+template = "hyprland"
+rewrite = true
+hook = "hyprctl reload"

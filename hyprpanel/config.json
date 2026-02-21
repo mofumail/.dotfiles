@@ -189,8 +189,19 @@
   "bar.customModules.storage.paths": [
     "/"
   ],
+  "bar.clock.format": "%H:%M:%S",
   "wallpaper.image": "/home/mofu/Pictures/papes/wallhaven-9djxk1.jpg",
   "wallpaper.enable": true,
   "theme.matugen": true,
-  "theme.bar.transparent": true
+  "theme.bar.transparent": true,
+  "menus.clock.weather.unit": "metric",
+  "menus.clock.weather.enabled": false,
+  "menus.clock.time.military": true,
+  "theme.bar.floating": false,
+  "theme.bar.outer_spacing": "1.6em",
+  "theme.bar.location": "top",
+  "bar.autoHide": "never",
+  "theme.bar.margin_top": "0.5em",
+  "theme.bar.buttons.padding_y": "0.2rem",
+  "theme.bar.buttons.y_margins": "0.2em"
 }

@@ -1,0 +1,133 @@
+/* ── Theme: {{scheme-name}} ────────────────────────── */
+/* ── Global ────────────────────────────────────────── */
+* {
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free";
+    font-size: 13px;
+    min-height: 0;
+}
+
+/* ── Bar: floating + rounded + blurred ────────────── */
+window#waybar {
+    background-color: rgba({{base00-hex-r}}, {{base00-hex-g}}, {{base00-hex-b}}, 0);
+    color: #{{base05-hex}};
+    border-radius: 14px;
+    border: 1px solid rgba({{base0D-hex-r}}, {{base0D-hex-g}}, {{base0D-hex-b}}, 0.15);
+    margin: 0;
+}
+
+/* ── Workspace buttons ────────────────────────────── */
+#workspaces {
+    background: rgba({{base01-hex-r}}, {{base01-hex-g}}, {{base01-hex-b}}, 0.5);
+    border-radius: 10px;
+    margin: 4px 4px;
+    padding: 2px 2px;
+}
+
+#workspaces button {
+    padding: 2px 10px;
+    color: #{{base03-hex}};
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    margin: 3px 4px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button.active {
+    color: #{{base00-hex}};
+    background: #{{base0D-hex}};
+}
+
+#workspaces button:hover {
+   color: #{{base00-hex}};
+   background: rgba({{base0D-hex-r}}, {{base0D-hex-g}}, {{base0D-hex-b}}, 0);
+}
+
+/* ── Window title ─────────────────────────────────── */
+#window {
+    color: #{{base04-hex}};
+    padding: 0 12px;
+}
+
+/* ── Center clock ─────────────────────────────────── */
+#clock {
+    color: #{{base05-hex}};
+    font-weight: bold;
+    background: rgba({{base01-hex-r}}, {{base01-hex-g}}, {{base01-hex-b}}, 0.5);
+    border-radius: 10px;
+    padding: 4px 14px;
+    margin: 3px 0;
+}
+
+/* ── Right-side module pills ──────────────────────── */
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#battery,
+#tray,
+#custom-notification {
+    padding: 4px 12px;
+    margin: 3px 2px;
+    border-radius: 10px;
+    background: rgba({{base01-hex-r}}, {{base01-hex-g}}, {{base01-hex-b}}, 0.5);
+    transition: all 0.2s ease;
+}
+
+/* ── Hover glow on interactive modules ────────────── */
+#pulseaudio:hover,
+#network:hover,
+#custom-notification:hover {
+    background: rgba({{base0D-hex-r}}, {{base0D-hex-g}}, {{base0D-hex-b}}, 0.2);
+}
+
+/* ── Per-module accent colors ─────────────────────── */
+#pulseaudio {
+    color: #{{base0E-hex}};
+}
+
+#network {
+    color: #{{base0C-hex}};
+}
+
+#cpu {
+    color: #{{base0D-hex}};
+}
+
+#memory {
+    color: #{{base0E-hex}};
+}
+
+#battery {
+    color: #{{base0B-hex}};
+}
+
+#battery.warning {
+    color: #{{base0A-hex}};
+}
+
+#battery.critical {
+    color: #{{base08-hex}};
+    animation: blink 1s ease infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.6; }
+}
+
+#tray {
+    color: #{{base05-hex}};
+}
+
+#custom-notification {
+    color: #{{base0A-hex}};
+    margin-right: 4px;
+}
+
+/* ── Tooltip ──────────────────────────────────────── */
+tooltip {
+    background-color: rgba({{base00-hex-r}}, {{base00-hex-g}}, {{base00-hex-b}}, 0.9);
+    border: 1px solid rgba({{base0D-hex-r}}, {{base0D-hex-g}}, {{base0D-hex-b}}, 0.3);
+    border-radius: 10px;
+    color: #{{base05-hex}};
+}
