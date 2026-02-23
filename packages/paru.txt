@@ -25,6 +25,16 @@ wl-clipboard
 brightnessctl
 hyprsunset
 
+# Audio (PipeWire stack — safe to install even if already present via --needed)
+pipewire
+pipewire-pulse
+pipewire-alsa
+wireplumber
+
+# System utilities
+polkit-gnome
+xdg-user-dirs
+
 # Tools
 git
 curl

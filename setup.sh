@@ -160,6 +160,36 @@ if (( ! SKIP_PACKAGES )); then
     fi
   fi
 
+  # ── GPU drivers ──
+  # Detect GPU vendor via lspci and install drivers if not already present.
+  # Uses --needed so this is a no-op on CachyOS Desktop (ships with drivers).
+  if command -v lspci &>/dev/null; then
+    GPU_PKGS=()
+    if lspci 2>/dev/null | grep -qi 'nvidia'; then
+      if pacman -Q nvidia &>/dev/null || pacman -Q nvidia-dkms &>/dev/null; then
+        log "NVIDIA GPU detected — drivers already installed, skipping"
+      else
+        log "NVIDIA GPU detected — queuing driver packages"
+        GPU_PKGS+=(nvidia-dkms nvidia-utils lib32-nvidia-utils egl-wayland)
+      fi
+    elif lspci 2>/dev/null | grep -qiE 'amd|radeon|advanced micro devices'; then
+      log "AMD GPU detected — queuing mesa/vulkan packages"
+      GPU_PKGS+=(mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon)
+    elif lspci 2>/dev/null | grep -qi 'intel'; then
+      log "Intel GPU detected — queuing mesa/vulkan packages"
+      GPU_PKGS+=(mesa lib32-mesa vulkan-intel lib32-vulkan-intel)
+    else
+      warn "Could not detect GPU vendor — skipping GPU driver install"
+    fi
+
+    if [[ ${#GPU_PKGS[@]} -gt 0 ]]; then
+      log "Installing GPU drivers: ${GPU_PKGS[*]}"
+      run paru -S --needed --noconfirm --skipreview "${GPU_PKGS[@]}"
+    fi
+  else
+    warn "lspci not found (install pciutils) — skipping GPU driver detection"
+  fi
+
 else
   log "Skipping packages (--no-packages)"
 fi
