@@ -1,121 +1,44 @@
-/* Kitty-inspired frosted UI for Firefox and Zen.
- * Palette source: kitty.conf (Catppuccin Mocha), opacity target 0.55.
- */
 :root {
-  --kitty-bg-rgb: 30, 30, 46;
-  --kitty-fg: #cdd6f4;
-  --kitty-border: rgba(137, 180, 250, 0.45);
-  --kitty-glass: rgba(var(--kitty-bg-rgb), 0.55);
-  --kitty-glass-soft: rgba(var(--kitty-bg-rgb), 0.42);
-  --kitty-blur: 18px;
-}
-
-#main-window,
-#browser,
-#tabbrowser-tabbox,
-#tabbrowser-tabpanels,
-#appcontent,
-browser[type="content-primary"] {
-  background: transparent !important;
+  color-scheme: dark;
 }
 
 #navigator-toolbox,
 #titlebar,
-#TabsToolbar,
 #nav-bar,
+#TabsToolbar,
 #PersonalToolbar,
 #sidebar-box,
 #sidebar-header,
+#zen-sidebar-icons-wrapper,
 #zen-sidebar-web-panel,
-#zen-sidebar-icons-wrapper {
-  background: var(--kitty-glass) !important;
-  color: var(--kitty-fg) !important;
-  border-color: var(--kitty-border) !important;
-  box-shadow: none !important;
-  backdrop-filter: blur(var(--kitty-blur)) saturate(120%) !important;
-  -webkit-backdrop-filter: blur(var(--kitty-blur)) saturate(120%) !important;
-}
-
-#tabbrowser-tabpanels,
-#appcontent {
-  background: rgba(var(--kitty-bg-rgb), 0.22) !important;
-}
-
-#urlbar-background,
-#searchbar,
-#urlbar-input-container,
-panel[type="arrow"],
-menupopup {
-  background: var(--kitty-glass-soft) !important;
-  color: var(--kitty-fg) !important;
-  border: 1px solid var(--kitty-border) !important;
-  backdrop-filter: blur(calc(var(--kitty-blur) + 2px)) !important;
-  -webkit-backdrop-filter: blur(calc(var(--kitty-blur) + 2px)) !important;
-}
-
-.tabbrowser-tab .tab-background {
-  background: rgba(var(--kitty-bg-rgb), 0.35) !important;
-}
-
-.tabbrowser-tab[selected] .tab-background {
-  background: rgba(137, 180, 250, 0.55) !important;
-}
-
-/* Keep tab text readable on blue selected tabs (important for Zen). */
-.tabbrowser-tab .tab-label,
-.tabbrowser-tab .tab-text,
-.tabbrowser-tab .tab-secondary-label,
-.tabbrowser-tab .tab-icon-overlay {
-  color: var(--kitty-fg) !important;
-}
-
-.tabbrowser-tab[selected] .tab-label,
-.tabbrowser-tab[selected] .tab-text,
-.tabbrowser-tab[selected] .tab-secondary-label,
-.tabbrowser-tab[selected] .tab-content,
-.tabbrowser-tab[selected] .tab-icon-overlay {
+#sidebar-splitter {
+  background-color: #1c1b22 !important;
   color: #ffffff !important;
-  fill: #ffffff !important;
 }
 
-/* Zen-specific readability fixes: URL text + New Tab labels/icons */
-#urlbar-input,
-#urlbar-input::placeholder,
-.urlbar-input,
-#urlbar .urlbar-input-box,
-#urlbar .urlbar-input-box * {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-}
-
-/* Fix Ctrl+T focused URL bar: keep dark field so white text stays readable. */
+/* Ctrl+T URL bar popup */
+#urlbar[breakout],
+#urlbar[breakout][breakout-extend],
+#urlbar[breakout] > #urlbar-background,
 #urlbar[breakout][breakout-extend] > #urlbar-background,
+#urlbar[breakout] #urlbar-input-container,
 #urlbar[breakout][breakout-extend] #urlbar-input-container,
-#urlbar[breakout][breakout-extend] #urlbar-input,
-#urlbar[breakout][breakout-extend] .urlbar-input,
-#urlbar[breakout][breakout-extend] .urlbarView {
-  background: rgba(var(--kitty-bg-rgb), 0.82) !important;
+.urlbarView,
+.urlbarView-body-outer,
+.urlbarView-body-inner,
+.urlbarView-results,
+.urlbarView-row,
+.urlbarView-row-inner,
+.search-one-offs,
+.search-panel-one-offs {
+  background-color: #1c1b22 !important;
   color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
+  color-scheme: dark !important;
 }
 
-#urlbar[breakout][breakout-extend] #urlbar-input::placeholder {
-  color: rgba(255, 255, 255, 0.72) !important;
-  -webkit-text-fill-color: rgba(255, 255, 255, 0.72) !important;
-}
-
-#new-tab-button,
-#tabs-newtab-button,
-#vertical-tabs-newtab-button,
-#zen-create-new-button,
-#new-tab-button .toolbarbutton-text,
-#tabs-newtab-button .toolbarbutton-text,
-#vertical-tabs-newtab-button .toolbarbutton-text,
-#zen-create-new-button .toolbarbutton-text,
-#new-tab-button .toolbarbutton-icon,
-#tabs-newtab-button .toolbarbutton-icon,
-#vertical-tabs-newtab-button .toolbarbutton-icon,
-#zen-create-new-button .toolbarbutton-icon {
+/* Make sure child text elements also pick up white, but skip images/icons */
+#navigator-toolbox *:not(image):not(img):not(canvas),
+#sidebar-box *:not(image):not(img):not(canvas),
+#sidebar-header *:not(image):not(img):not(canvas) {
   color: #ffffff !important;
-  fill: #ffffff !important;
 }
